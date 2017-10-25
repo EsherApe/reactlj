@@ -1,8 +1,9 @@
 import React from 'react';
 import CommentList from './CommentList';
 import PropTypes from 'prop-types';
+import  toggleOpen from '../decorators/toggleOpen';
 
-export default class Article extends React.Component {
+class Article extends React.Component {
     static propTypes = {
         article: PropTypes.shape({
             id: PropTypes.string.isRequired,
@@ -79,3 +80,5 @@ export default class Article extends React.Component {
         this.setState({showComments: !this.state.showComments});
     }
 }
+
+export default toggleOpen(Article);
