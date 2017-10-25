@@ -1,7 +1,20 @@
 import React from 'react';
 import CommentList from './CommentList';
+import PropTypes from 'prop-types';
 
 export default class Article extends React.Component {
+    static propTypes = {
+        article: PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            title: PropTypes.string.isRequired,
+            text: PropTypes.string
+        }).isRequired
+    };
+
+    static defaultProps = {
+        comments: []
+    };
+
     constructor(props) {
         super(props);
         this.state = {
@@ -41,7 +54,7 @@ export default class Article extends React.Component {
 
     showCommentButton() {
         const {article} = this.props;
-        if(!article.comments) return null;
+        if(!article.comments || !article.comments.length) return null;
         const {showComments} = this.state;
         return (
             <div>
