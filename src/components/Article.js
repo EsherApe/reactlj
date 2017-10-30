@@ -12,28 +12,14 @@ class Article extends React.Component {
         }).isRequired
     };
 
-    static defaultProps = {
-        comments: []
-    };
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            showArticle: true,
-            showComments: true,
-            showCommentsButton: null
-        }
-    }
-
     render() {
-        const {article} = this.props;
-        const {showArticle} = this.state;
+        const {article, isOpen, toggleOpen} = this.props;
 
         return (
             <div>
                 <h1>{article.title}</h1>
-                <button onClick={this.toggleOpenArticle}>
-                    {showArticle ? 'close article' : 'open article'}
+                <button onClick={toggleOpen}>
+                    {isOpen ? 'close article' : 'open article'}
                 </button>
                 {this.getBody()}
             </div>
@@ -41,43 +27,15 @@ class Article extends React.Component {
     }
 
     getBody() {
-        if(!this.state.showArticle) return null;
-        const {article} = this.props;
+        const {article, isOpen} = this.props;
+        if(!isOpen) return null;
 
         return (
             <section>
                 {article.text}
-                {this.showCommentButton()}
-                {this.getComments()}
+                <CommentList comments={article.comments}/>
             </section>
         )
-    }
-
-    showCommentButton() {
-        const {article} = this.props;
-        if(!article.comments || !article.comments.length) return null;
-        const {showComments} = this.state;
-        return (
-            <div>
-                <button onClick={this.toggleOpenComments}>
-                    {showComments ? 'hide comments' : 'show comments'}
-                </button>
-            </div>
-        )
-    }
-
-    getComments() {
-        if(!this.state.showComments) return null;
-        const {article} = this.props;
-        return <CommentList comments={article.comments}/>
-    }
-
-    toggleOpenArticle = () => {
-        this.setState({showArticle: !this.state.showArticle});
-    };
-
-    toggleOpenComments = () => {
-        this.setState({showComments: !this.state.showComments});
     }
 }
 
