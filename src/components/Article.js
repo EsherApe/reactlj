@@ -59,4 +59,4 @@ class Article extends React.Component {
     };
 }
 
-export default toggleOpen(Article);
+export default Article;
