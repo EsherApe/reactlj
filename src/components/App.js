@@ -4,8 +4,12 @@ import ArticleList from "./ArticleList";
 import ArticleChart from './ArticleChart';
 
 class App extends Component {
-    static proppTypes = {
-
+    static propTypes = {
+        articles: PropTypes.arrayOf(PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            title: PropTypes.string.isRequired,
+            text: PropTypes.string
+        })).isRequired
     };
 
     render() {

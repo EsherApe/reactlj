@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default (OriginComponent) => class WrappedComponent extends React.Component {
     state = {
@@ -9,7 +10,7 @@ export default (OriginComponent) => class WrappedComponent extends React.Compone
         return <OriginComponent {...this.props} {...this.state} toggleOpen = {this.toggleOpen}/>
     };
 
-    toggleOpen = (ev) => {
+    toggleOpen = ev => {
         ev && ev.preventDefault && ev.preventDefault();
         this.setState({isOpen: !this.state.isOpen});
     };

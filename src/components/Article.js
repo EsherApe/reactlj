@@ -1,7 +1,6 @@
 import React from 'react';
 import CommentList from './CommentList';
 import PropTypes from 'prop-types';
-import  toggleOpen from '../decorators/toggleOpen';
 
 class Article extends React.Component {
     static propTypes = {
@@ -9,37 +8,23 @@ class Article extends React.Component {
             id: PropTypes.string.isRequired,
             title: PropTypes.string.isRequired,
             text: PropTypes.string
-        }).isRequired
+        }).isRequired,
+        isOpen: PropTypes.bool.isRequired,
+        toggleAccordion: PropTypes.func.isRequired
     };
 
-    componentWillReceiveProps(nextProps) {
-        console.log('------', 'updating', this.props.isOpen, nextProps.isOpen);
-    }
-
-    componentWillMount() {
-        console.log('-----', 'mounting');
-    }
-
     render() {
-        const {article, isOpen, toggleOpen} = this.props;
+        const {article, isOpen, toggleAccordion} = this.props;
 
         return (
-            <div ref={this.setContainerRef}>
+            <div>
                 <h1>{article.title}</h1>
-                <button onClick={toggleOpen}>
+                <button onClick={toggleAccordion}>
                     {isOpen ? 'close' : 'open'} article
                 </button>
                 {this.getBody()}
             </div>
         )
-    }
-
-    setContainerRef = ref => {
-        this.container = ref;
-    };
-
-    componentDidMount() {
-        console.log('-----', 'mounted');
     }
 
     getBody() {
@@ -49,14 +34,10 @@ class Article extends React.Component {
         return (
             <section>
                 {article.text}
-                <CommentList comments={article.comments} ref={this.setCommentRef()}/>
+                <CommentList comments={article.comments}/>
             </section>
         )
     }
-
-    setCommentRef = ref => {
-        console.log(ref);
-    };
 }
 
 export default Article;
