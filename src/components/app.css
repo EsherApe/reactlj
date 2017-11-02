@@ -1,0 +1,25 @@
+body {
+    font-family: -apple-system,
+    BlinkMacSystemFont,
+    "Helvetica Neue",
+    "Helvetica",
+    "Arial",
+    "sans-serif";
+    font-size: 14px;
+}
+
+input {
+    -webkit-appearance: none;
+    padding: .5rem 1rem;
+    border: 1px solid #DCE0E0;
+    color: #565A5C;
+    font-size: 16px;
+    font-family: -apple-system,
+    BlinkMacSystemFont,
+    "Helvetica Neue",
+    "Helvetica",
+    "Arial",
+    "sans-serif";
+    text-align: center;
+    font-weight: 300;
+}
