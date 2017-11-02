@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-export default (OriginComponent) => class WrappedComponent extends React.Component {
+export default (OriginComponent) => class WrappedComponent extends Component {
     state = {
         isOpen: false
     };
