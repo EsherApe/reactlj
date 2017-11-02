@@ -6,6 +6,7 @@ import 'moment';
 
 class DayPeriod extends Component {
     static propTypes = {};
+
     state = {
         dateFrom: '',
         dateTo: '',

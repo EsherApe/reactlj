@@ -5,7 +5,6 @@ import ArticleChart from './ArticleChart';
 import UserForm from './UserForm';
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
-import './app.css'
 import DayPeriod from './DayPeriod';
 
 class App extends Component {
