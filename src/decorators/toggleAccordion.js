@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default (OriginComponent) => class WrappedComponent extends React.Component {
+export default (OriginComponent) => class Accordion extends React.Component {
     state = {
         openId: null
     };
@@ -9,14 +9,10 @@ export default (OriginComponent) => class WrappedComponent extends React.Compone
         return <OriginComponent {...this.props} {...this.state} toggleAccordion = {this.toggleAccordion}/>
     };
 
-    toggleAccordion = openId => ev => {
-        this.setState({openId});
-    };
-
-    componentWillUpdate(nextProps, nextState, nextContext) {
-        if(this.state.openId === nextState.openId) {
-            this.setState({openId: null});
-        }
+    toggleAccordion = openId => () => {
+        this.setState({
+            openId: openId === this.state.openId ? null : openId
+        });
     };
 
 }
