@@ -15,6 +15,8 @@ class CommentForm extends Component {
         let length = e.target.value.length;
         if(length < 5 || length > 15) {
             e.target.style.border = '1px solid red';
+        } else {
+            e.target.style.border = '1px solid rgb(169, 169, 169)';
         }
 
         console.log(length);
