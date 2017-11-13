@@ -2,10 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Article from './Article';
 import toggleAccordion from '../decorators/toggleAccordion';
+import {connect} from 'react-redux';
 
 class ArticleList extends React.Component {
     static propTypes = {
+        //from connect
         articles: PropTypes.array.isRequired,
+        //from accordeon
         openId: PropTypes.string,
         toggleAccordion: PropTypes.func.isRequired
     };
@@ -29,4 +32,6 @@ class ArticleList extends React.Component {
     }
 }
 
-export default toggleAccordion(ArticleList);
+export default connect(state => ({
+    articles: state.articles
+}))(toggleAccordion(ArticleList))
