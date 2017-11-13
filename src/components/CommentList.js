@@ -1,7 +1,7 @@
 import React from 'react';
 import Comment from './Comment';
 import toggleOpen from '../decorators/toggleOpen';
-import CommentForm from './CommentForm';
+import CommentForm from './commentForm'
 
 function CommentList ({comments = [], isOpen, toggleOpen}){
     const text = isOpen ? 'hide' : 'show';
