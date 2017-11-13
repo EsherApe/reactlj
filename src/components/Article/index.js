@@ -1,5 +1,5 @@
 import React, {Component, PureComponent} from 'react';
-import CommentList from './CommentList';
+import CommentList from '../CommentList';
 import PropTypes from 'prop-types';
 import {CSSTransitionGroup} from 'react-transition-group';
 import './article.css';
