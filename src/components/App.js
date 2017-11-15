@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import ArticleList from './ArticleList';
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
-import DayPeriod from './DayPeriod';
 import Counter from './Counter';
+import './Filters';
+import Filters from "./Filters/index";
 
 class App extends Component {
     static propTypes = {};
@@ -13,7 +14,7 @@ class App extends Component {
         return (
             <div>
                 <Counter/>
-                <DayPeriod/>
+                <Filters/>
                 <ArticleList/>
             </div>
         )

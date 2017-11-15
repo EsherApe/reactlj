@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import CommentList from '../CommentList';
 import PropTypes from 'prop-types';
 import {CSSTransitionGroup} from 'react-transition-group';
-import {deleteArticle} from "../../AC/index";
+import {deleteArticle} from "../../AC";
 import './article.css';
 
 class Article extends Component {
