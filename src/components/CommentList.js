@@ -3,7 +3,7 @@ import Comment from './Comment';
 import toggleOpen from '../decorators/toggleOpen';
 import CommentForm from './commentForm'
 
-function CommentList ({comments = [], isOpen, toggleOpen}){
+function CommentList({comments = [], isOpen, toggleOpen}) {
     const text = isOpen ? 'hide' : 'show';
 
     return (
@@ -14,13 +14,13 @@ function CommentList ({comments = [], isOpen, toggleOpen}){
     );
 
     function getBody({comments, isOpen}) {
-        if(!isOpen) return null;
-        if(!comments.length) return <p>No comments yet!</p>;
+        if (!isOpen) return null;
+        if (!comments.length) return <p>No comments yet!</p>;
 
         return (
             <div>
                 <ul>
-                    {comments.map(comment => <li key={comment.id}><Comment comment={comment}/></li>)}
+                    {comments.map(id => <li key={id}><Comment id={id}/></li>)}
                 </ul>
                 <CommentForm/>
             </div>
