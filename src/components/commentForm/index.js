@@ -31,7 +31,7 @@ class CommentForm extends Component {
                                   className={this.getClassName('text')}>
                         </textarea>
                     </div>
-                    <input type='submit' value='Submit'/>
+                    <button type='submit' onClick={this.handleSubmit}>Submit</button>
                 </form>
             </div>
         );
