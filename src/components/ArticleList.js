@@ -4,6 +4,7 @@ import Article from './Article';
 import toggleAccordion from '../decorators/toggleAccordion';
 import {connect} from 'react-redux';
 import {filtrateArticlesSelector} from "../selectors/index";
+import {loadAllArticles} from '../AC';
 
 class ArticleList extends React.Component {
     static propTypes = {
@@ -13,6 +14,10 @@ class ArticleList extends React.Component {
         openId: PropTypes.string,
         toggleAccordion: PropTypes.func.isRequired
     };
+
+    componentDidMount() {
+        this.props.loadAllArticles()
+    }
 
     render() {
         const {articles, openId, toggleAccordion} = this.props;
@@ -38,4 +43,4 @@ export default connect(state => {
     return {
         articles: filtrateArticlesSelector(state)
     }
-})(toggleAccordion(ArticleList))
+}, {loadAllArticles})(toggleAccordion(ArticleList))
