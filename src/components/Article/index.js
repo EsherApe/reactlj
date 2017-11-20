@@ -17,6 +17,11 @@ class Article extends Component {
         toggleAccordion: PropTypes.func.isRequired
     };
 
+    state = {
+        updateIndex: 0,
+        areCommentsOpen: false
+    };
+
     //PureComponent это тот же Component только со встроенным shouldComponentUpdate который сравнивает все новые и старые пропсы
     //можно не писать shouldComponentUpdate если компонент унаследован от PureComponent
     // shouldComponentUpdate(nextProps, nextState, nextContext) {
@@ -58,9 +63,13 @@ class Article extends Component {
         return (
             <section>
                 {article.text}
-                <CommentList comments={article.comments}/>
+                <CommentList article={article} ref = {this.setCommentsRef} key = {this.state.updateIndex}/>
             </section>
         )
+    }
+
+    setCommentsRef = ref => {
+
     }
 }
 
