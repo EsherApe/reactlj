@@ -70,6 +70,6 @@ router.post('/comment', function (req, res, next) {
 
 router.post('/report', function (req, res) {
     res.json({})
-})
+});
 
 module.exports = router;

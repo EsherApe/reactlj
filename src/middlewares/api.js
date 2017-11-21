@@ -12,7 +12,6 @@ export default store => next => action => {
         fetch(callAPI)
             .then(res => res.json())
             .then(response => {
-                console.log(response);
                 next({...rest, type: type + SUCCESS, response})
             })
             .catch(error => next({...rest, type: type + FAIL, error}))

@@ -27,7 +27,7 @@ export default (commentsState = defaultState, action) => {
 
         case LOAD_ALL_COMMENTS + SUCCESS:
             return commentsState
-                .set('entities', arrToMap(response, CommentRecord))
+                .set('entities', arrToMap(response.records, CommentRecord))
                 .set('loading', false)
                 .set('loaded', true);
 

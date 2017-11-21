@@ -29,6 +29,7 @@ const mapStateToProps = () => {
     const commentSelector = commentSelectorFactory();
 
     return (state, ownProps) => {
+        console.log(state);
         return {
             comment: commentSelector(state, ownProps)
         }

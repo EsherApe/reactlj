@@ -27,12 +27,6 @@ class Article extends Component {
         if(isOpen && !article.text && !article.loading) loadArticle(article.id);
     }
 
-    //PureComponent это тот же Component только со встроенным shouldComponentUpdate который сравнивает все новые и старые пропсы
-    //можно не писать shouldComponentUpdate если компонент унаследован от PureComponent
-    // shouldComponentUpdate(nextProps, nextState, nextContext) {
-    //     return nextProps !== this.props.isOpen
-    // }
-
     render() {
         const {article, isOpen, toggleAccordion} = this.props;
 
