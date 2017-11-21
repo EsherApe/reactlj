@@ -1,4 +1,3 @@
-import {normalizedArticles as defaultArticles} from '../fixtures';
 import {arrToMap} from '../helpers';
 import {DELETE_ARTICLE, ADD_COMMENT, LOAD_ARTICLE, LOAD_ALL_ARTICLES, START, SUCCESS} from "../constants";
 import {OrderedMap, Record} from 'immutable';
