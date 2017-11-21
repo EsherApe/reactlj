@@ -1,16 +1,17 @@
 import {normalizedArticles as defaultArticles} from '../fixtures';
 import {arrToMap} from '../helpers';
-import {DELETE_ARTICLE, ADD_COMMENT, LOAD_ALL_ARTICLES, START, SUCCESS} from "../constants";
-import {OrderedMap, Map, Record} from 'immutable';
+import {DELETE_ARTICLE, ADD_COMMENT, LOAD_ARTICLE, LOAD_ALL_ARTICLES, START, SUCCESS} from "../constants";
+import {OrderedMap, Record} from 'immutable';
 
-const articleRecord = Record({
+const ArticleRecord = Record({
     text: undefined,
     title: '',
     id: undefined,
+    loading: false,
     comments: []
 });
 
-const ReducerState = new Record({
+const ReducerState = Record({
     loading: false,
     loaded: false,
     entities: new OrderedMap({})
@@ -36,9 +37,15 @@ export default (articleState = defaultState, action) => {
 
         case LOAD_ALL_ARTICLES + SUCCESS:
             return articleState
-                .set('entities', arrToMap(response, articleRecord))
+                .set('entities', arrToMap(response, ArticleRecord))
                 .set('loading', false)
-                .set('loaded', true)
+                .set('loaded', true);
+
+        case LOAD_ARTICLE + START:
+            return articleState.setIn(['entities', payload.id, 'loading'], true);
+
+        case LOAD_ARTICLE + SUCCESS:
+            return articleState.setIn(['entities', payload.id], new ArticleRecord(payload.response))
     }
 
     return articleState;

@@ -3,7 +3,8 @@ import {connect} from 'react-redux';
 import CommentList from '../CommentList';
 import PropTypes from 'prop-types';
 import {CSSTransitionGroup} from 'react-transition-group';
-import {deleteArticle} from "../../AC";
+import {deleteArticle, loadArticle} from "../../AC";
+import Loader from '../Loader'
 import './article.css';
 
 class Article extends Component {
@@ -21,6 +22,10 @@ class Article extends Component {
         updateIndex: 0,
         areCommentsOpen: false
     };
+
+    componentWillReceiveProps({isOpen, loadArticle, article}) {
+        if(isOpen && !article.text && !article.loading) loadArticle(article.id);
+    }
 
     //PureComponent это тот же Component только со встроенным shouldComponentUpdate который сравнивает все новые и старые пропсы
     //можно не писать shouldComponentUpdate если компонент унаследован от PureComponent
@@ -59,6 +64,7 @@ class Article extends Component {
     getBody() {
         const {article, isOpen} = this.props;
         if(!isOpen) return null;
+        if(article.loading) return <Loader/>;
 
         return (
             <section>
@@ -73,4 +79,4 @@ class Article extends Component {
     }
 }
 
-export default connect(null, {deleteArticle})(Article);
+export default connect(null, {deleteArticle, loadArticle})(Article);
