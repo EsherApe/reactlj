@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 class CommentList extends Component {
 
     render () {
-        const {article, isOpen, toggleOpen} = this.props
+        const {article, isOpen, toggleOpen} = this.props;
         const text = isOpen ? 'hide' : 'show';
         return (
             <div>

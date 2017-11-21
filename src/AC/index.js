@@ -1,6 +1,15 @@
 import {
-    DELETE_ARTICLE, INCREMENT, CHANGE_SELECTION, CHANGE_DATE_RANGE, ADD_COMMENT, LOAD_ALL_ARTICLES, LOAD_ARTICLE,
-    START, SUCCESS, FAIL
+    DELETE_ARTICLE,
+    INCREMENT,
+    CHANGE_SELECTION,
+    CHANGE_DATE_RANGE,
+    ADD_COMMENT,
+    LOAD_ALL_ARTICLES,
+    LOAD_ARTICLE,
+    LOAD_ALL_COMMENTS,
+    START,
+    SUCCESS,
+    FAIL
 } from "../constants";
 
 export function increment() {
@@ -73,3 +82,10 @@ export function loadArticle(id) {
 //         callAPI: `/api/article/${id}`
 //     }
 // }
+
+export function loadAllComments() {
+    return {
+        type: LOAD_ALL_COMMENTS,
+        callAPI: '/api/comment'
+    }
+}

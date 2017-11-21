@@ -1,4 +1,4 @@
-import React, {Component, PureComponent} from 'react';
+import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import CommentList from '../CommentList';
 import PropTypes from 'prop-types';
