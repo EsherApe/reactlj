@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import ArticleList from './ArticleList';
+import ArticleList from './routes/Articles';
+import NotFound from './routes/NotFound';
 import 'react-select/dist/react-select.css';
 import Counter from './Counter';
 import './Filters';
 import Filters from "./Filters/index";
-import {HashRouter as Router, Route, NavLink} from 'react-router-dom';
+import {BrowserRouter as Router, Route, NavLink, Switch} from 'react-router-dom';
 
 class App extends Component {
     static propTypes = {};
@@ -22,9 +23,12 @@ class App extends Component {
                             <li><NavLink activeStyle={{color: 'red'}} to="/articles">Articles</NavLink></li>
                         </ul>
                     </div>
-                    <Route path="/counter" component={Counter}/>
-                    <Route path="/filters" component={Filters}/>
-                    <Route path="/articles" component={ArticleList}/>
+                    <Switch>
+                        <Route path="/counter" component={Counter}/>
+                        <Route path="/filters" component={Filters}/>
+                        <Route path="/articles" component={ArticleList}/>
+                        <Route path="*" component={NotFound}/>
+                    </Switch>
                 </div>
             </Router>
         )

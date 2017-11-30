@@ -24,7 +24,7 @@ export default (commentsState = defaultState, action) => {
             return commentsState.setIn(['entities', randomId], new CommentRecord({...payload.comment, id: randomId}));
 
         case LOAD_ARTICLE_COMMENTS + SUCCESS:
-            return commentsState.update('entities', entities => entities.merge(arrToMap(response, CommentRecord)))
+            return commentsState.update('entities', entities => entities.merge(arrToMap(response, CommentRecord)));
     }
 
     return commentsState;
