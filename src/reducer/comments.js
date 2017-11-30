@@ -4,9 +4,9 @@ import {OrderedMap, Record} from 'immutable';
 import {LOAD_ARTICLE_COMMENTS, START, SUCCESS, FAIL} from '../constants'
 
 const CommentRecord = Record({
-    id: undefined,
-    user: undefined,
-    text: undefined,
+    id: null,
+    user: null,
+    text: null,
 });
 
 const ReducerState = Record({

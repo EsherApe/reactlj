@@ -20,7 +20,8 @@ class Articles extends Component {
         return <Article id={id} isOpen key={id}/>
     };
 
-    getIndex = () => {
+    getIndex = ({match}) => {
+        if (!match) return <h2>Article page</h2>;
         return <h2>Please select article</h2>;
     }
 }

@@ -36,7 +36,7 @@ CommentList.propTypes = {
 
 function getBody({article: {comments = [], id, commentsLoaded, commentsLoading}, isOpen}) {
     if (!isOpen) return null;
-    if (!commentsLoading) return <Loader/>;
+    if (commentsLoading) return <Loader/>;
     if(!commentsLoaded) return null;
 
     if (!comments.length) return (
