@@ -1,10 +1,19 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import Comment from './Comment';
 import toggleOpen from '../decorators/toggleOpen';
 import CommentForm from './commentForm';
-import PropTypes from 'prop-types';
+import {loadArticleComments} from '../AC';
+import {connect} from 'react-redux';
+import Loader from "./Loader";
 
 class CommentList extends Component {
+
+    componentWillReceiveProps({isOpen, article, loadArticleComments}) {
+        if (!this.props.isOpen && isOpen && !article.commentsLoading && !article.commentsLoaded) {
+            loadArticleComments(article.id);
+        }
+    }
 
     render () {
         const {article, isOpen, toggleOpen} = this.props;
@@ -25,8 +34,11 @@ CommentList.propTypes = {
     toggleOpen: PropTypes.func
 };
 
-function getBody({article: {comments = [], id}, isOpen}) {
+function getBody({article: {comments = [], id, commentsLoaded, commentsLoading}, isOpen}) {
     if (!isOpen) return null;
+    if (!commentsLoading) return <Loader/>;
+    if(!commentsLoaded) return null;
+
     if (!comments.length) return (
         <div>
             <p>No comments yet!</p>
@@ -44,4 +56,4 @@ function getBody({article: {comments = [], id}, isOpen}) {
     )
 }
 
-export default toggleOpen(CommentList);
+export default connect(null, {loadArticleComments})(toggleOpen(CommentList));

@@ -6,7 +6,7 @@ import {
     ADD_COMMENT,
     LOAD_ALL_ARTICLES,
     LOAD_ARTICLE,
-    LOAD_ALL_COMMENTS,
+    LOAD_ARTICLE_COMMENTS,
     START,
     SUCCESS,
     FAIL
@@ -83,9 +83,10 @@ export function loadArticle(id) {
 //     }
 // }
 
-export function loadAllComments() {
+export function loadArticleComments(articleId) {
     return {
-        type: LOAD_ALL_COMMENTS,
-        callAPI: '/api/comment'
+        type: LOAD_ARTICLE_COMMENTS,
+        payload: articleId,
+        callAPI: `/api/comment?article=${articleId}`
     }
 }

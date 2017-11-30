@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {commentSelectorFactory} from '../selectors';
-import {loadAllComments} from '../AC';
 
 class Comment extends Component{
     static propTypes = {
@@ -29,11 +28,10 @@ const mapStateToProps = () => {
     const commentSelector = commentSelectorFactory();
 
     return (state, ownProps) => {
-        console.log(state);
         return {
             comment: commentSelector(state, ownProps)
         }
     }
 };
 
-export default connect(mapStateToProps, {loadAllComments})(Comment);
+export default connect(mapStateToProps)(Comment);
