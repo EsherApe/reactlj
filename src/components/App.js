@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import ArticleList from './routes/Articles';
+import CommentList from './routes/Comments';
 import NotFound from './routes/NotFound';
 import 'react-select/dist/react-select.css';
 import Counter from './Counter';
@@ -21,12 +22,14 @@ class App extends Component {
                             <li><NavLink activeStyle={{color: 'red'}} to="/counter">Counter</NavLink></li>
                             <li><NavLink activeStyle={{color: 'red'}} to="/filters">Filters</NavLink></li>
                             <li><NavLink activeStyle={{color: 'red'}} to="/articles">Articles</NavLink></li>
+                            <li><NavLink activeStyle={{color: 'red'}} to="/comments">Comments</NavLink></li>
                         </ul>
                     </div>
                     <Switch>
                         <Route path="/counter" component={Counter}/>
                         <Route path="/filters" component={Filters}/>
                         <Route path="/articles" component={ArticleList}/>
+                        <Route path="/comments" component={CommentList}/>
                         <Route path="*" component={NotFound}/>
                     </Switch>
                 </div>
