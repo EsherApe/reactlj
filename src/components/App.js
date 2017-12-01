@@ -7,14 +7,16 @@ import 'react-select/dist/react-select.css';
 import Counter from './Counter';
 import './Filters';
 import Filters from './Filters/index';
-import {BrowserRouter as Router, Route, NavLink, Switch, Redirect} from 'react-router-dom';
+import {Route, NavLink, Switch} from 'react-router-dom';
+import {ConnectedRouter} from 'react-router-redux';
+import history from '../history';
 
 class App extends Component {
     static propTypes = {};
 
     render() {
         return (
-            <Router>
+            <ConnectedRouter history = {history}>
                 <div>
                     <div>
                         <h2>Main menu</h2>
@@ -33,7 +35,7 @@ class App extends Component {
                         <Route path='*' component={NotFound}/>
                     </Switch>
                 </div>
-            </Router>
+            </ConnectedRouter>
         )
     }
 }
