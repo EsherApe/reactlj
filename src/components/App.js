@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import ArticleList from './routes/Articles';
-import CommentList from './routes/Comments';
+import CommentsPage from './routes/CommentsPage';
 import NotFound from './routes/NotFound';
 import 'react-select/dist/react-select.css';
 import Counter from './Counter';
@@ -29,7 +29,7 @@ class App extends Component {
                         <Route path="/counter" component={Counter}/>
                         <Route path="/filters" component={Filters}/>
                         <Route path="/articles" component={ArticleList}/>
-                        <Route path="/comments" component={CommentList}/>
+                        <Route path="/comments/:page" component={CommentsPage}/>
                         <Route path="*" component={NotFound}/>
                     </Switch>
                 </div>

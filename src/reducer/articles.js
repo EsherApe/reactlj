@@ -49,7 +49,7 @@ export default (articleState = defaultState, action) => {
             return articleState.setIn(['entities', payload.id, 'loading'], true);
 
         case LOAD_ARTICLE + SUCCESS:
-            return articleState.setIn(['entities', payload.id], new ArticleRecord(payload.response))
+            return articleState.setIn(['entities', payload.id], new ArticleRecord(payload.response));
 
         case LOAD_ARTICLE_COMMENTS + START:
             return articleState.setIn(['entities', payload.articleId, 'commentsLoading'], true);
